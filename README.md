@@ -1,5 +1,6 @@
 # Apple-ID-finder
-![image](https://github.com/ivanjrt/Apple-ID-finder/assets/44326428/e5329b67-d10a-466e-a6ac-6c2f98e5a89b)
+![image](https://github.com/ivanjrt/Apple-ID-finder/assets/44326428/0d6e5e06-8201-4ee5-a77e-d4f626bb9250)
+
 
 * Reqs: <br/>
 Install nodeJS: https://nodejs.org/en/download/package-manager 
