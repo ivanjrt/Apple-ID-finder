@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ivanjrt/XBOX360GP/main/favicon.png">
+  <title>Apple ID Finder</title>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+      padding-top: 10px;
+    }
+
+    #appContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 400px;
+    }
+    button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            cursor: pointer;  
+          }
+
+    #appForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      width: 100px;
+      height: auto;
+      opacity: 0.7;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+
+    .github-link {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      color: ghostwhite;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      /* Dark mode styles */
+      body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="appContent">
+    <img class="logo" src="https://raw.githubusercontent.com/ivanjrt/XBOX360GP/main/BundleIDExtractor.png" alt="App Icon">
+    <form id="appForm" action="/find-apple-id" method="post">
+      <label for="appleId">Enter full link or # ID of the Apple App:</label>
+      <input type="text" id="appleId" name="appleId" required>
+      <button type="submit">Find Apple ID</button>
+    </form>
+  </div>
+  
+  <a href="https://github.com/ivanjrt" target="_blank" class="github-link">© github.com/ivanjrt</a>
+
+</body>
+
+</html>
