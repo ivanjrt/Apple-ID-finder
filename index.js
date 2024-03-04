@@ -3,7 +3,7 @@ const axios   = require('axios');
 const path    = require('path');
 
 const app  = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5002;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,7 +27,10 @@ app.post('/find-apple-id', async (req, res) => {
     if (appExtraction.data.results.length > 0) {
       const trackName = appExtraction.data.results[0].trackCensoredName;
       const bundleId  = appExtraction.data.results[0].bundleId;
-      const iconUrl   = appExtraction.data.results[0].artworkUrl60; // Icon URL
+      const iconUrl   = appExtraction.data.results[0].artworkUrl60;
+      const version   = appExtraction.data.results[0].version;
+      const versionDate = appExtraction.data.results[0].currentVersionReleaseDate;
+      const minOsVer  = appExtraction.data.results[0].minimumOsVersion;
 
       // Send the response with bundle ID, icon URL, and reset and copy buttons
       res.status(200).send(`
@@ -37,7 +40,7 @@ app.post('/find-apple-id', async (req, res) => {
         <title>Apple ID Finder</title>
         <link rel="icon" type="image/png" href="favicon.png">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-      
+
         <style>
           body {
             font-family: 'Poppins', sans-serif;
@@ -54,7 +57,7 @@ app.post('/find-apple-id', async (req, res) => {
             width: 64px;
             height: 64px;
             object-fit: contain;
-            margin-right: 10px;  
+            margin-right: 10px;
           }
           .bundle {
             display: flex;
@@ -78,7 +81,7 @@ app.post('/find-apple-id', async (req, res) => {
             border-radius: 4px;
             padding: 12px 24px;
             font-size: 1rem;
-            cursor: pointer;  
+            cursor: pointer;
           }
           @media (prefers-color-scheme: dark) {
           /* Dark mode styles */
@@ -95,9 +98,12 @@ app.post('/find-apple-id', async (req, res) => {
           <span>${bundleId}</span>
           <span style="cursor: pointer;" onclick="copyBundleId('${bundleId}')">🔗</span>
         </div>
-      
+        <p> The latest version by Apple is: <u> ${version} </u></p>
+        <p> Version Released Date: <u> ${versionDate} (UTC) </u></p>
+        <p> Minimum Requirement for iOS: <u> ${minOsVer} </u></p>
+
         <button onclick="goToHomePage()">Go to Home Page</button>
-      
+
         <script>
         function goToHomePage() {
           window.location.href = "/";
@@ -113,9 +119,9 @@ app.post('/find-apple-id', async (req, res) => {
           document.body.removeChild(el);
         }
         </script>
-      
+
       </body>
-      
+
       </html>
       `);
     } else {
@@ -146,15 +152,15 @@ app.post('/find-apple-id', async (req, res) => {
           border-radius: 4px;
           padding: 12px 24px;
           font-size: 1rem;
-          cursor: pointer;  
+          cursor: pointer;
         }
       </style>
-      
+
       <body>
         <h2>Your ID was not found. Please check again</h2>
-        
+
         <button onclick="goToHomePage()">Go to Home Page</button>
-      
+
         <script>
           function goToHomePage() {
             window.location.href = "/";
@@ -162,7 +168,7 @@ app.post('/find-apple-id', async (req, res) => {
         </script>
 
       </body>
-      
+
       </html>
       `);
     }
@@ -194,16 +200,16 @@ app.post('/find-apple-id', async (req, res) => {
         border-radius: 4px;
         padding: 12px 24px;
         font-size: 1rem;
-        cursor: pointer;  
+        cursor: pointer;
       }
     </style>
-    
+
     <body>
     <h2>An error occurred while fetching the Apple ID. Please check again</h2>
 
-      
+
       <button onclick="goToHomePage()">Go to Home Page</button>
-    
+
       <script>
         function goToHomePage() {
           window.location.href = "/";
@@ -211,7 +217,7 @@ app.post('/find-apple-id', async (req, res) => {
       </script>
 
     </body>
-    
+
     </html>
     `);
   }
