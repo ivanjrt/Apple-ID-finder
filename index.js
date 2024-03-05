@@ -209,8 +209,6 @@ app.post('/find-apple-id', async (req, res) => {
 
     <body>
     <h2>An error occurred while fetching the Apple ID. Please try again with just the Bundle ID</h2>
-
-
       <button onclick="goToHomePage()">⬅️Go back</button>
 
       <script>
