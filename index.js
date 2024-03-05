@@ -31,6 +31,7 @@ app.post('/find-apple-id', async (req, res) => {
       const version   = appExtraction.data.results[0].version;
       const versionDate = appExtraction.data.results[0].currentVersionReleaseDate;
       const minOsVer  = appExtraction.data.results[0].minimumOsVersion;
+      const publisher  = appExtraction.data.results[0].artistName;
 
       // Send the response with bundle ID, icon URL, and reset and copy buttons
       res.status(200).send(`
@@ -64,9 +65,10 @@ app.post('/find-apple-id', async (req, res) => {
             align-items: center;
             margin: 20px 0;
             padding: 10px;
-            background-color: #fff;
+            background-color: #161616;
             border-radius: 4px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            color:#008CBA;
           }
           .bundle img {
             margin-right: 20px;
@@ -101,8 +103,9 @@ app.post('/find-apple-id', async (req, res) => {
         <p> The latest version by Apple is: <u> ${version} </u></p>
         <p> Version Released Date: <u> ${versionDate} (UTC) </u></p>
         <p> Minimum Requirement for iOS: <u> ${minOsVer} </u></p>
+        <p> Publisher Name: <u> ${publisher} </u></p>
 
-        <button onclick="goToHomePage()">Go to Home Page</button>
+        <button onclick="goToHomePage()">⬅️Go back</button>
 
         <script>
         function goToHomePage() {
@@ -159,7 +162,7 @@ app.post('/find-apple-id', async (req, res) => {
       <body>
         <h2>Your ID was not found. Please check again</h2>
 
-        <button onclick="goToHomePage()">Go to Home Page</button>
+        <button onclick="goToHomePage()">⬅️Go back</button>
 
         <script>
           function goToHomePage() {
@@ -208,7 +211,7 @@ app.post('/find-apple-id', async (req, res) => {
     <h2>An error occurred while fetching the Apple ID. Please check again</h2>
 
 
-      <button onclick="goToHomePage()">Go to Home Page</button>
+      <button onclick="goToHomePage()">⬅️Go back</button>
 
       <script>
         function goToHomePage() {
