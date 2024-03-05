@@ -160,7 +160,7 @@ app.post('/find-apple-id', async (req, res) => {
       </style>
 
       <body>
-        <h2>Your ID was not found. Please check again</h2>
+        <h2>Your ID was not found. Please try again with just the Bundle ID</h2>
 
         <button onclick="goToHomePage()">⬅️Go back</button>
 
@@ -208,7 +208,7 @@ app.post('/find-apple-id', async (req, res) => {
     </style>
 
     <body>
-    <h2>An error occurred while fetching the Apple ID. Please check again</h2>
+    <h2>An error occurred while fetching the Apple ID. Please try again with just the Bundle ID</h2>
 
 
       <button onclick="goToHomePage()">⬅️Go back</button>
